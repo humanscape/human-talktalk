@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-const Home = () => (
+const Home: React.FC = () => (
   <>
     <Head>
       <title>Create Next App</title>
@@ -11,6 +11,6 @@ const Home = () => (
       <p className="text-gray-500">with Tailwind CSS</p>
     </div>
   </>
-)
+);
 
-export default Home
+export default Home;

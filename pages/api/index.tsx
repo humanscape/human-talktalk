@@ -1,6 +1,6 @@
 import { NextApiHandler } from 'next';
 
-const hello: NextApiHandler = (req, res) => {
+const hello: NextApiHandler = async (req, res) => {
   res.status(200).json({
     isHealthy: true,
   });

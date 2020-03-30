@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 module.exports = {
   poweredByHeader: false,
   webpack(config, { dev }) {
@@ -19,5 +21,5 @@ module.exports = {
     config.plugins.push(new CleanWebpackPlugin());
     // config.plugins.push(new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ko/));
     return config;
-  }
+  },
 };

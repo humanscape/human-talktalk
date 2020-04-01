@@ -9,9 +9,12 @@
     "lint": "eslint . --ext ts,tsx"
   },
   "dependencies": {
+    "clsx": "^1.1.0",
     "next": "9.3.2",
+    "next-images": "^1.4.0",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "swr": "^0.2.0"
   },
   "devDependencies": {
     "@types/node": "^13.9.5",

@@ -4,4 +4,5 @@ const Home: React.FC = () => (
     <p className="text-gray-500">with Tailwind CSS</p>
   </div>
 );
+
 export default Home;

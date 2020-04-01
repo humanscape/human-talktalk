@@ -1,6 +1,7 @@
 /* eslint-disable */
+const withImages = require('next-images');
 
-module.exports = {
+module.exports = withImages({
   poweredByHeader: false,
   // webpack(config, { dev }) {
   //   const webpack = require('webpack');
@@ -21,4 +22,4 @@ module.exports = {
   //   // config.plugins.push(new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /ko/));
   //   return config;
   // },
-};
+});

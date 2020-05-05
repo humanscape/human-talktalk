@@ -3,12 +3,12 @@ import { NextApiHandler } from 'next';
 import { getUsers } from '../../../services/api/slack.service';
 
 import { makeStandardError, ErrorCode } from '../../../utils/common/error.util';
-import { formatSlackUsersResponse } from '../../../utils/api/format.util';
+import { formatSlackUsers } from '../../../utils/api/format.util';
 
 const handler: NextApiHandler = async (req, res) => {
   try {
-    const { data } = await getUsers();
-    const formatted = formatSlackUsersResponse(data);
+    const users = await getUsers();
+    const formatted = formatSlackUsers(users);
 
     res.status(200).json(formatted);
   } catch (err) {

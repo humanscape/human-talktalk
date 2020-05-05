@@ -34,7 +34,9 @@ function standardizeName(name: string) {
 function mapToMember(user: SlackAPI.User): Member {
   return {
     id: user.id,
-    name: standardizeName(user.profile.display_name),
+    name: user.profile.display_name.length
+      ? standardizeName(user.profile.display_name)
+      : standardizeName(user.profile.real_name),
     avatar: user.profile.image_72,
   };
 }

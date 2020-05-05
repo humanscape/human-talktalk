@@ -1,8 +1,22 @@
-const Home: React.FC = () => (
-  <div className="p-4 shadow rounded bg-white">
-    <h1 className="text-purple-500 leading-normal">Next.js</h1>
-    <p className="text-gray-500">with Tailwind CSS</p>
-  </div>
-);
+import MemberItem from '../components/molecules/MemberItem';
+import useMembers from '../hooks/useMembers';
+
+const Home: React.FC = () => {
+  const { status, data: members } = useMembers();
+
+  if (status === 'loading') {
+    return <div>Loading...</div>;
+  }
+
+  if (status === 'error') {
+    return <div>An error occured!</div>;
+  }
+
+  return (
+    <div className="flex flex-row flex-wrap items-center p-2 bg-white">
+      {members?.map((member) => <MemberItem member={member} key={member.name} />) ?? null}
+    </div>
+  );
+};
 
 export default Home;

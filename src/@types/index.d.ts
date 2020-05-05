@@ -60,3 +60,12 @@ declare namespace SlackAPI {
     team: string;
   }
 }
+
+/**
+ * 휴먼톡톡 Member 타입
+ */
+declare interface Member {
+  id: string;
+  name: string;
+  avatar: string;
+}

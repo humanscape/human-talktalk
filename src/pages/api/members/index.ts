@@ -1,16 +1,16 @@
 import { NextApiHandler } from 'next';
 
-import { getUsers } from '../../../services/slack.services';
+import { getUsers } from '../../../services/api/slack.service';
 
 import { makeStandardError, ErrorCode } from '../../../utils/common/error.util';
-import { filterSlackUsersResponse } from '../../../utils/api/format.util';
+import { formatSlackUsersResponse } from '../../../utils/api/format.util';
 
 const handler: NextApiHandler = async (req, res) => {
   try {
     const { data } = await getUsers();
-    const filtered = filterSlackUsersResponse(data);
+    const formatted = formatSlackUsersResponse(data);
 
-    res.status(200).json(filtered);
+    res.status(200).json(formatted);
   } catch (err) {
     const error = makeStandardError(ErrorCode.SLACK_API_FAILED, 'An error occured when calling Slack API.');
 

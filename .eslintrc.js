@@ -40,7 +40,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': 'off',
-    'import/prefer-default-export': 'warn',
+    'import/prefer-default-export': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/click-events-have-key-events': 'warn',
     'jsx-a11y/alt-text': 'off',

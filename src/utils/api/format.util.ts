@@ -41,17 +41,17 @@ function mapToMember(user: SlackAPI.User): Member {
   };
 }
 
+export function sortMember(left: Member, right: Member) {
+  return left.name.localeCompare(right.name);
+}
+
 export function formatSlackUsers(users: SlackAPI.User[]) {
   function filterUser(user: SlackAPI.User): boolean {
     return !isSlackBot(user) && !isDeleted(user) && !isBot(user);
   }
 
-  return users.filter(filterUser).map(mapToMember);
-}
-
-export function formatSlackUsersResponse(data: any) {
-  if (!data.ok || data.error || !data.members) {
-    throw new Error();
-  }
-  return formatSlackUsers(data.members);
+  return users
+    .filter(filterUser)
+    .map(mapToMember)
+    .sort(sortMember);
 }

@@ -69,3 +69,19 @@ declare interface Member {
   name: string;
   avatar: string;
 }
+
+/**
+ * 휴먼톡톡 Result 타입
+ */
+declare interface Result {
+  id: string;
+  createdAt: number;
+  payload: ResultPayload;
+}
+
+declare interface ResultPayloadItem {
+  groupName: string;
+  members: Member[];
+}
+
+declare type ResultPayload = ResultPayloadItem[];

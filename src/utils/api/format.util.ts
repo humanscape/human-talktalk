@@ -1,3 +1,5 @@
+import { compareMember } from '../common/compare.util';
+
 const standardNames = [
   {
     name: 'Zake',
@@ -41,10 +43,6 @@ function mapToMember(user: SlackAPI.User): Member {
   };
 }
 
-export function sortMember(left: Member, right: Member) {
-  return left.name.localeCompare(right.name);
-}
-
 export function formatSlackUsers(users: SlackAPI.User[]) {
   function filterUser(user: SlackAPI.User): boolean {
     return !isSlackBot(user) && !isDeleted(user) && !isBot(user);
@@ -53,5 +51,5 @@ export function formatSlackUsers(users: SlackAPI.User[]) {
   return users
     .filter(filterUser)
     .map(mapToMember)
-    .sort(sortMember);
+    .sort(compareMember);
 }

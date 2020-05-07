@@ -20,11 +20,11 @@ const MemberList: React.FC<Props> = ({
   ), [onMemberSelect]);
 
   return (
-    <div className="mt-4 mb-8">
+    <div className="mb-8">
       <div className="flex flex-row items-center align-middle">
         <Subtitle>{title}</Subtitle>
         <div className="ml-4" />
-        <Button variant="primary" color="teal" onClick={onSelectAll}>{selectAllText}</Button>
+        <Button variant="tertiary" color="indigo" disabled={!members.length} onClick={onSelectAll}>{selectAllText}</Button>
       </div>
       <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 mt-4">
         {members.length ? members.map(renderMember) : <span className="text-2xl ml-1" role="img" aria-label="없음">🙅🏽</span>}

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useCallback } from 'react';
 
 interface Props {
   onClick?: (e: React.MouseEvent) => void;
@@ -47,8 +47,15 @@ const Button: React.FC<Props> = ({
     return `${base} cursor-pointer`;
   }, [variant, color, disabled, size]);
 
+  const handleClick = useCallback((e) => {
+    if (disabled || !onClick) {
+      return;
+    }
+    onClick(e);
+  }, [disabled, onClick]);
+
   return (
-    <div className={containerClassName} onClick={onClick}>
+    <div className={containerClassName} onClick={handleClick}>
       {children}
     </div>
   );

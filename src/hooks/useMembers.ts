@@ -1,9 +1,9 @@
-import { useQuery } from 'react-query';
+import { useQuery, QueryOptions } from 'react-query';
 import { getMembers } from '../services/client/self.service';
 
-function useMembers() {
-  const data = useQuery('members', getMembers);
-  return data;
+function useMembers(options?: QueryOptions<Member[]>) {
+  const info = useQuery('members', getMembers, options);
+  return { info };
 }
 
 export default useMembers;

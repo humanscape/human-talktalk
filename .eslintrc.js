@@ -21,15 +21,18 @@ module.exports = {
   plugins: [
     'prettier',
     'react-hooks',
+    'import',
   ],
   rules: {
     '@typescript-eslint/require-await': 'off',
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'warn',
+    '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/consistent-type-assertions': ['warn', { assertionStyle: 'as' }],
     '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/unbound-method': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/no-unescaped-entities': 'off',
@@ -39,20 +42,39 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': 'off',
-    'import/prefer-default-export': 'warn',
+    'import/prefer-default-export': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
-    'jsx-a11y/click-events-have-key-events': 'warn',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/alt-text': 'off',
     'eqeqeq': 'warn',
     'linebreak-style': 'off',
     'spaced-comment': 'off',
-    'class-methods-use-this': 'off'
+    'class-methods-use-this': 'off',
+    'max-len': ['warn', { 'code': 120 }],
+    'max-classes-per-file': 'off',
+    'no-use-before-define': 'off',
+    // conflicting rules
+    'semi': 'off',
+    '@typescript-eslint/semi': ['error'],
   },
   globals: {
     React: 'writable',
   },
+  env: {
+    browser: true,
+    node: true,
+  },
   settings: {
     react: {
       version: 'detect',
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      'typescript': {
+        alwaysTryTypes: true
+      },
     },
   },
 };

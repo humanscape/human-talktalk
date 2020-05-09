@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
+import { version } from '../../../package.json';
+
 interface ComputedPathname {
   [x: string]: string;
 }
@@ -22,6 +24,10 @@ const PageHeader: React.FC = () => {
           </div>
         </Link>
         <div className="text-lg antialiased ml-2">{computedPathname[pathname] ?? ''}</div>
+        <div className="flex flex-1" />
+        <div className="text-gray-700 text-sm">
+          {`v${version}`}
+        </div>
       </div>
     </div>
   );

@@ -30,7 +30,9 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/consistent-type-assertions': ['warn', { assertionStyle: 'as' }],
     '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/unbound-method': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/no-unescaped-entities': 'off',
@@ -49,6 +51,8 @@ module.exports = {
     'spaced-comment': 'off',
     'class-methods-use-this': 'off',
     'max-len': ['warn', { 'code': 120 }],
+    'max-classes-per-file': 'off',
+    'no-use-before-define': 'off',
     // conflicting rules
     'semi': 'off',
     '@typescript-eslint/semi': ['error'],

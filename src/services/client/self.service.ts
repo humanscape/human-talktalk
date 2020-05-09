@@ -25,6 +25,14 @@ export async function getHistories() {
 }
 
 /**
+ * `POST /api/result/send`
+ */
+export async function sendResult({ result, password }: { result: Result, password: string }) {
+  const { data } = await axios.post('/api/result/send', { result, password });
+  return data;
+}
+
+/**
  * `POST /api/presets` (TODO)
  */
 export async function savePreset(body: any) {

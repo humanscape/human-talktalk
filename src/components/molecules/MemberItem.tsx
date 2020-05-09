@@ -2,10 +2,10 @@ import { useCallback } from 'react';
 
 interface Props {
   member: Member;
-  onSelect: (id: string) => void;
+  onSelect?: (id: string) => void;
 }
 
-const MemberItem: React.FC<Props> = ({ member, onSelect }) => {
+const MemberItem: React.FC<Props> = ({ member, onSelect = () => {} }) => {
   const handleClick = useCallback(() => {
     onSelect(member.id);
   }, [member, onSelect]);

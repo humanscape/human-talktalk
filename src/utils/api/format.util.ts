@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { compareMember } from '../common/compare.util';
 
 const standardNames = [
@@ -8,6 +9,25 @@ const standardNames = [
   {
     name: 'Hj',
     to: 'HJ',
+  },
+];
+
+const standardEmojis = [
+  {
+    name: 'george',
+    to: 'george2',
+  },
+  {
+    name: 'joy',
+    to: 'joy2',
+  },
+  {
+    name: 'tasha',
+    to: 'tasha-new',
+  },
+  {
+    name: 'vincent',
+    to: 'vincent2',
   },
 ];
 
@@ -52,4 +72,41 @@ export function formatSlackUsers(users: SlackAPI.User[]) {
     .filter(filterUser)
     .map(mapToMember)
     .sort(compareMember);
+}
+
+function getMemberEmoji(name: string) {
+  const lowercased = name.toLowerCase();
+  const target = standardEmojis.find((standardEmoji) => standardEmoji.name === lowercased);
+  return `:${target ? target.to : lowercased}:`;
+}
+
+export function mapToSlackMessageBlock(result: Result) {
+  return {
+    blocks: [
+      {
+        type: 'section',
+        text: {
+          type: 'plain_text',
+          text: '오늘의 휴먼톡톡 파트너입니다. 마음에 드시나요? :blob-tongue:',
+          emoji: true,
+        },
+      },
+      ...result.payload.map(({ groupName, members }) => ({
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: `*${groupName}* ${members.map(({ name }) => `${getMemberEmoji(name)} ${name}`).join(' ')}`,
+        },
+      })),
+      {
+        type: 'context',
+        elements: [
+          {
+            type: 'mrkdwn',
+            text: '휴먼톡톡 by Henry, https://human-talktalk.now.sh',
+          },
+        ],
+      },
+    ],
+  };
 }

@@ -1,6 +1,8 @@
 import {
   useState, useMemo, useCallback, ChangeEvent,
 } from 'react';
+import { queryCache } from 'react-query';
+import routeService from 'next/router';
 
 import Button from '../components/atoms/Button';
 import Subtitle from '../components/atoms/Subtitle';
@@ -25,7 +27,6 @@ const Home: React.FC = () => {
   } = useMembers({
     onSuccess: (val) => {
       setSelected(val);
-      setSize(val.length > 2 ? 2 : val.length);
     },
     refetchOnWindowFocus: false,
     refetchOnMount: false,
@@ -69,7 +70,8 @@ const Home: React.FC = () => {
 
   const handleRoulette = useCallback(() => {
     const result = mapToResult(getBalancedChunks(getShuffledArray(selected), size));
-    console.log(result);
+    queryCache.setQueryData('result', () => result);
+    routeService.push('/result');
   }, [selected, size]);
 
   return (

@@ -1,11 +1,6 @@
-import moment from 'moment';
 import { compareMember } from '../common/compare.util';
 
 const standardNames = [
-  {
-    name: 'Zake',
-    to: 'Jake',
-  },
   {
     name: 'Hj',
     to: 'HJ',
@@ -13,18 +8,6 @@ const standardNames = [
 ];
 
 const standardEmojis = [
-  {
-    name: 'george',
-    to: 'george2',
-  },
-  {
-    name: 'joy',
-    to: 'joy2',
-  },
-  {
-    name: 'tasha',
-    to: 'tasha-new',
-  },
   {
     name: 'vincent',
     to: 'vincent2',

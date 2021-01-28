@@ -26,6 +26,10 @@ function isDeleted(user: SlackAPI.User) {
   return user.deleted;
 }
 
+function filterUser(user: SlackAPI.User): boolean {
+  return !(isSlackBot(user) || isDeleted(user) || isBot(user));
+}
+
 function capitalizeName(name: string) {
   return `${name.charAt(0).toUpperCase()}${name.slice(1)}`;
 }
@@ -47,10 +51,6 @@ function mapToMember(user: SlackAPI.User): Member {
 }
 
 export function formatSlackUsers(users: SlackAPI.User[]) {
-  function filterUser(user: SlackAPI.User): boolean {
-    return !isSlackBot(user) && !isDeleted(user) && !isBot(user);
-  }
-
   return users
     .filter(filterUser)
     .map(mapToMember)

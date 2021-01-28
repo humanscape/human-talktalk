@@ -16,7 +16,7 @@ const MemberList: React.FC<Props> = ({
   title, members, selectAllText, onMemberSelect = () => {}, onSelectAll = () => {},
 }) => {
   const renderMember = useCallback((member) => (
-    <MemberItem member={member} key={member.name} onSelect={onMemberSelect} />
+    <MemberItem member={member} key={member.id} onSelect={onMemberSelect} />
   ), [onMemberSelect]);
 
   return (
